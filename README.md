@@ -2,8 +2,8 @@
 Springboot+Vue前后端分离多用户社区项目
 
 ### 代码开源地址
-[前端](https://github.com/Havanana/Rajor-bbs)
-[后端](https://github.com/songboriceman/rajor_community_backend)
+[前端](https://github.com/Havanana/Rajor-bbs-front)
+[后端](https://github.com/Havanana/Rajor-bbs-back)
 
 
 ### 项目主要业务及实现的功能
