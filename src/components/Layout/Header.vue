@@ -90,10 +90,11 @@
         >
           <b-navbar-item
             tag="router-link"
-            :to="{ path: `/member/${user.username}/home` }"
+            :to="{ path: `/member/${user.username}/${user.id}/home2` }"
           >
             🧘 个人中心
           </b-navbar-item>
+          
           <hr class="dropdown-divider">
           <b-navbar-item
             tag="router-link"
@@ -108,6 +109,7 @@
           > 👋 退出登录
           </b-navbar-item>
         </b-navbar-dropdown>
+        <!-- {{user}} -->
       </template>
     </b-navbar>
   </header>
@@ -123,7 +125,7 @@ export default {
   data() {
     return {
       logoUrl: require('@/assets/logo.png'),
-      rajorImg: require('@/assets/image/logo5.png'),
+      rajorImg: require('@/assets/image/logo6.png'),
       zyImg: require('@/assets/image/zy.png'),
       searchKey: '',
       darkMode: false

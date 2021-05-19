@@ -4,6 +4,7 @@
       <swiper-slider><img :src="lb1Img" alt="" class="swiper-css"></swiper-slider>
       <swiper-slider><img :src="lb2Img" alt="" class="swiper-css"></swiper-slider>
       <swiper-slider><img :src="lb3Img" alt="" class="swiper-css"></swiper-slider>
+      <swiper-slider><img :src="lb5Img" alt="" class="swiper-css"></swiper-slider>
     </swiper>
   </div>
 </template>
@@ -24,7 +25,8 @@ export default {
     return {
        lb1Img: require('@/assets/image/lb12.jpg'),
        lb2Img: require('@/assets/image/lb22.jpg'),
-       lb3Img: require('@/assets/image/lb32.jpg'),
+       lb3Img: require('@/assets/image/lb4.jpg'),
+       lb5Img: require('@/assets/image/lb5.jpg'),
     }
   }
 }

@@ -38,7 +38,22 @@
                       
                       <span class="is-hidden-mobile" style="margin-left:10px;">等级:<code>{{ item.score }}</code></span>
                     </div>
+                    
+                    <div style="margin-left:450px;">
+                      <button
+                        v-if="hasFollow2(item.id)"
+                        class="button is-success button-center is-fullwidth"
+                        @click="handleUnFollow(item.id)"
+                      >
+                        已关注
+                      </button>
+
+                      <button v-else class="button is-link button-center is-fullwidth" @click="handleFollow(item.id)">
+                        关注
+                      </button>
+                    </div>
                   </div>
+                  
                 </nav>
               </div>
               <div class="media-right" />
@@ -81,12 +96,28 @@
                       <span class="is-hidden-mobile" style="margin-left:10px;">等级:<code>{{ item.score }}</code></span>
                     </div>
                   </div>
+                  <div style="margin-left:450px;">
+                      <button
+                        v-if="hasFollow3(item.id)"
+                        class="button is-success button-center is-fullwidth"
+                        @click="handleUnFollow(item.id)"
+                      >
+                        互相关注
+                      </button>
+<!-- 
+                      <button v-else class="button is-link button-center is-fullwidth" @click="handleFollow(item.id)">
+                        关注
+                      </button> -->
+                    </div>
                 </nav>
               </div>
               <div class="media-right" />
             </article>
           </el-tab-pane>
+          <!-- {{topics}}
+          {{topics2}} -->
         </el-tabs>
+
       </div>
 
     
@@ -100,6 +131,7 @@ import { getInfoById2 } from '@/api/follow'
 import Pagination from '@/components/Pagination'
 import { mapGetters } from 'vuex'
 import Avatar from 'vue-avatar'
+import { follow, hasFollow, unFollow } from '@/api/follow'
 
 export default {
   name: 'Fans',
@@ -112,6 +144,7 @@ export default {
       userF2:[],
       topics2: [],
       data1:{}
+      
     }
   },
   mounted() {
@@ -123,6 +156,7 @@ export default {
   created() {
     // this.init(this.tab)
     this.fetchInfoById()
+    
 
   },
   methods: {
@@ -133,16 +167,60 @@ export default {
         this.userF = data.user
         this.data1=data
         this.topics = data.topics
-        // console.log( this.topics);
       }),
       getInfoById2(this.$route.params.id).then((res) => {
         const { data } = res
         this.userF2 = data.user
         // this.data2=data
         this.topics2 = data.topics
-        console.log( this.topics2);
+        // console.log( this.topics2[0].id);
       })
- 
+    },
+    hasFollow2(itemId) {
+      var bool=false;
+      try {
+        this.topics2.forEach(function(val){
+        
+        if(val.id == itemId){
+          bool= true;
+          throw Error();
+          }
+        })
+      } catch (e) {
+      }
+      return bool;
+
+    },
+    hasFollow3(itemId) {
+      var bool=false;
+      try {
+        this.topics.forEach(function(val){
+        
+        if(val.id == itemId){
+          bool= true;
+          throw Error();
+          }
+        })
+      } catch (e) {
+      }
+      return bool;
+
+    },
+    handleFollow: function(id) {
+      follow(id).then(response => {
+        const { message } = response
+        this.$message.success(message)
+        this.hasFollow = !this.hasFollow
+        this.user.followerCount = parseInt(this.user.followerCount) + 1
+      })  
+    },
+    handleUnFollow: function(id) {
+      unFollow(id).then(response => {
+        const { message } = response
+        this.$message.success(message)
+        this.hasFollow = !this.hasFollow
+        this.user.followerCount = parseInt(this.user.followerCount) - 1
+      })
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div id="answer">
+  <div id="answer" style="opacity: 0.8;">
     
     <div class="box" v-if="isMan" style="text-align:center;width:800px;height:500px;margin-top:50px;margin-left:140px;">
           <div style="font-size:30px;margin-top:130px;">满分！同意你的加入了！</div> 

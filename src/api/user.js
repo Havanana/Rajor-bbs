@@ -11,6 +11,17 @@ export function getInfoByName(username, page, size) {
     }
   })
 }
+export function getInfoById(id, page, size) {
+  return request({
+    url: '/ums/user/' + id,
+    method: 'get',
+    params: {
+      pageNo: page,
+      size: size
+    }
+  })
+}
+
 
 // 用户主页
 export function getInfo() {

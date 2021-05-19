@@ -97,14 +97,14 @@
 
 <script>
 import { getInfoByName } from '@/api/user'
-import { getTopic } from '@/api/post'
+import { getTopicByUserId } from '@/api/post'
 import pagination from '@/components/Pagination/index'
 import { mapGetters } from 'vuex'
 import { deleteTopic } from '@/api/post'
 import Avatar from 'vue-avatar'
 
 export default {
-  name: 'Profile',
+  name: 'Profile2',
   props: {
     userfollow: {
       type: Number,
@@ -115,7 +115,7 @@ export default {
   data() {
     return {
       topicUser: {},
-      topicUser2: {},
+      topicUser2: [],
       topics: {},
       page: {
         current: 1,
@@ -145,12 +145,15 @@ export default {
         this.page.size = data.topics.size
         this.page.total = data.topics.total
         this.topics = data.topics.records
+        console.log(data);
       }),
-      getTopic(this.$route.params.id).then(response => {
+      getTopicByUserId(this.$route.params.id).then(response => {
         const { data } = response  
         this.topicUser2 = data.user
         console.log(data);
+        
       })
+    //   getInfoById(this.$route.params.id).then()
       
     },
     jump(){

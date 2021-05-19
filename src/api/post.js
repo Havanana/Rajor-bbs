@@ -28,6 +28,15 @@ export function getTopic(id) {
     }
   })
 }
+export function getTopicByUserId(userId) {
+  return request({
+    url: `/post/userId`,
+    method: 'get',
+    params: {
+      userId: userId
+    }
+  })
+}
 // 获取详情页推荐
 export function getRecommendTopics(id) {
   return request({

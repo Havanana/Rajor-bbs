@@ -39,7 +39,7 @@ export function getInfoById(id) {
 //粉丝页面
 export function getInfoById2(id) {
   return request({
-    url: `/follow//validate/${id}`,
+    url: `/follow/validate/${id}`,
     method: 'get',
     // params: {
     //   pageNo: current,

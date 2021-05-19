@@ -78,6 +78,13 @@ const routes = [
     component: () => import('@/views/user/Profile'),
     meta: { title: '用户主页' }
   },
+  // 用户主页2
+  {
+    name: 'user',
+    path: '/member/:username/:id/home2',
+    component: () => import('@/views/user/Profile2'),
+    meta: { title: '用户主页' }
+  },
   // 用户设置
   {
     name: 'user-setting',

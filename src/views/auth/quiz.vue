@@ -1,6 +1,6 @@
 <!--考生答题界面-->
 <template>
-  <div class="box" >
+  <div class="box" style="opacity: 0.8;">
     <div >
       <div style="font-size:30px;text-align:center;margin-bottom:80px;margin-top:40px;">
           要先通过小测哦！
@@ -24,8 +24,6 @@
               }}
             </p>
           </div>
-
-          <!-- 单选题 -->
           <!-- 题目绑定的值是 ruleForm.resource[index]  -->
           
           <div >
@@ -67,10 +65,10 @@ export default {
       ques: [],
       radio:[],
       ruleForm: {
-	    resource: [],
-	  } ,
+        resource: [],
+      } ,
       questionArrText: [],			//答题保存的数组
-      score: null						//表单提交后，后端返回的总分
+      score: null					    	//表单提交后，后端返回的总分
      
     }
   },
@@ -97,7 +95,7 @@ export default {
             	this.ruleForm.resource[i] = ''
 			  
             }
-            this.questionArrText = data	//重新赋值，用来判断他是否全部答完
+            // this.questionArrText = data	//重新赋值，用来判断他是否全部答完
       })
  
     },
